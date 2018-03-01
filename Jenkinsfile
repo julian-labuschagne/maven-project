@@ -1,5 +1,10 @@
 pipeline {
   agent any
+
+  tools {
+    maven 'localMaven'
+  }
+
   stages{
     stage('Init'){
       steps {
@@ -9,7 +14,7 @@ pipeline {
 
     stage('Build'){
       steps {
-        sh '/usr/local/apache-maven-3.5.2/bin/mvn clean package'
+        sh 'mvn clean package'
       }
       post {
         success {
